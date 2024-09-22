@@ -1,10 +1,15 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors')
 const app = express();
 const upload = multer(); 
 app.use(express.json());
-
-
+const corso = {
+    origin:'*',
+    methods:["GET","POST"],
+    credentials:true
+};
+app.use(cors(corso));
 app.get('/bfhl', (req, res) => {
     res.json({ operation_code: 1 });
 });
@@ -32,7 +37,7 @@ app.post('/bfhl', upload.single('file_b64'), (req, res) => {
 
     res.json({
         is_success: true,
-        user_id: "Harshvardhan_Sharma",  
+        user_id: "Harshvardhan_Sharma_26072003",  
         email: "hr4404@srmist.edu.in",
         roll_number: "RA2111051010021",
         numbers: numbers,
@@ -45,7 +50,7 @@ app.post('/bfhl', upload.single('file_b64'), (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3000;
+const PORT =  4000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port 4000`);
 });
